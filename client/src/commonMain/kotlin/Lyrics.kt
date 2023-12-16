@@ -26,7 +26,7 @@ internal expect fun newClient(config: HttpClientConfig<*>.() -> Unit): HttpClien
 /**
  * Client for retrieving lyrics from the YouTube API.
  */
-class LyricsClient : Closeable, CoroutineScope {
+public class LyricsClient : Closeable, CoroutineScope {
     override val coroutineContext: CoroutineContext = Dispatchers.IO + SupervisorJob()
     private val client = newClient {
         install(ContentNegotiation) {
@@ -41,7 +41,7 @@ class LyricsClient : Closeable, CoroutineScope {
     /**
      * Requests the [Lyrics] for [videoId].
      */
-    suspend fun requestLyrics(videoId: String): Lyrics {
+    public suspend fun requestLyrics(videoId: String): Lyrics {
         val nextPage = requestNextPage(videoId)
         val browseId = nextPage.browseEndpoint ?: throw LyricsNotFoundException()
 
@@ -58,7 +58,7 @@ class LyricsClient : Closeable, CoroutineScope {
      *
      * @see SearchTrack
      */
-    suspend fun search(query: String): List<SearchTrack> {
+    public suspend fun search(query: String): List<SearchTrack> {
         val result = request(MusicApi.Search(), SearchRequest(mobileYoutubeMusicContext, query))
 
         return result
