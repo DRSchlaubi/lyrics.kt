@@ -27,9 +27,9 @@ class RestHandler(private val socketServer: SocketServer) {
         }
     }
 
-    @GetMapping(value = ["/v4/lyrics/search/{videoId}"])
-    fun searchLyrics(@PathVariable videoId: String): List<SearchTrack> = runBlocking {
-        client.search(videoId)
+    @GetMapping(value = ["/v4/lyrics/search/{query}"])
+    fun searchLyrics(@PathVariable query: String): List<SearchTrack> = runBlocking {
+        client.search(query)
     }
 
     @GetMapping(value = ["/v4/sessions/{sessionId}/players/{guildId}/lyrics"])

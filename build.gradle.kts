@@ -6,7 +6,7 @@ plugins {
     alias(libs.plugins.kotlin.plugin.serialization) apply false
 }
 allprojects {
-    group = "dev.schlaubi"
+    group = "dev.schlaubi.lyrics"
     version = "1.0-SNAPSHOT"
 
     repositories {
