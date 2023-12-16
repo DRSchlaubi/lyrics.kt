@@ -1,0 +1,696 @@
+{
+  "track": {
+    "title": "We Got the Moves",
+    "author": "Electric Callboy",
+    "album": "We Got the Moves"
+  },
+  "source": "LyricFind",
+  "lines": [
+    {
+      "line": "♪",
+      "range": {
+        "start": 0,
+        "end": 6510
+      }
+    },
+    {
+      "line": "Summer mood",
+      "range": {
+        "start": 6510,
+        "end": 7330
+      }
+    },
+    {
+      "line": "Hot sand under my feet",
+      "range": {
+        "start": 7330,
+        "end": 9350
+      }
+    },
+    {
+      "line": "Cold beer, cheap wine",
+      "range": {
+        "start": 9350,
+        "end": 10930
+      }
+    },
+    {
+      "line": "Yeah, that's all that we need",
+      "range": {
+        "start": 10930,
+        "end": 12580
+      }
+    },
+    {
+      "line": "We got the moves",
+      "range": {
+        "start": 12580,
+        "end": 13600
+      }
+    },
+    {
+      "line": "We got the moves",
+      "range": {
+        "start": 13600,
+        "end": 14860
+      }
+    },
+    {
+      "line": "And everybody's like",
+      "range": {
+        "start": 14860,
+        "end": 16230
+      }
+    },
+    {
+      "line": "Oh fuck yeah, let's do it again",
+      "range": {
+        "start": 16230,
+        "end": 18900
+      }
+    },
+    {
+      "line": "We got the moves",
+      "range": {
+        "start": 18900,
+        "end": 20010
+      }
+    },
+    {
+      "line": "We got the moves",
+      "range": {
+        "start": 20010,
+        "end": 21110
+      }
+    },
+    {
+      "line": "When everybody's like",
+      "range": {
+        "start": 21110,
+        "end": 22590
+      }
+    },
+    {
+      "line": "Yesterday we drank too much",
+      "range": {
+        "start": 22590,
+        "end": 24000
+      }
+    },
+    {
+      "line": "Let's do it again",
+      "range": {
+        "start": 24000,
+        "end": 25350
+      }
+    },
+    {
+      "line": "We got the groove",
+      "range": {
+        "start": 25350,
+        "end": 26340
+      }
+    },
+    {
+      "line": "We got the groove",
+      "range": {
+        "start": 26340,
+        "end": 27370
+      }
+    },
+    {
+      "line": "So everybody put your hands straight up",
+      "range": {
+        "start": 27370,
+        "end": 30250
+      }
+    },
+    {
+      "line": "Tonight is the night",
+      "range": {
+        "start": 30250,
+        "end": 31690
+      }
+    },
+    {
+      "line": "We are young",
+      "range": {
+        "start": 31690,
+        "end": 33150
+      }
+    },
+    {
+      "line": "We are free",
+      "range": {
+        "start": 33150,
+        "end": 35330
+      }
+    },
+    {
+      "line": "Sipping on booze on a sunny beach",
+      "range": {
+        "start": 35330,
+        "end": 38050
+      }
+    },
+    {
+      "line": "We're alive",
+      "range": {
+        "start": 38050,
+        "end": 39550
+      }
+    },
+    {
+      "line": "We believe",
+      "range": {
+        "start": 39550,
+        "end": 41340
+      }
+    },
+    {
+      "line": "That summer time memories",
+      "range": {
+        "start": 41340,
+        "end": 43590
+      }
+    },
+    {
+      "line": "Will never fade away",
+      "range": {
+        "start": 43590,
+        "end": 49920
+      }
+    },
+    {
+      "line": "We're living the good life, high life",
+      "range": {
+        "start": 49920,
+        "end": 53000
+      }
+    },
+    {
+      "line": "Everybody wants that hot vibe",
+      "range": {
+        "start": 53000,
+        "end": 54580
+      }
+    },
+    {
+      "line": "We wanna feel it just all over and over again",
+      "range": {
+        "start": 54580,
+        "end": 57820
+      }
+    },
+    {
+      "line": "More, just give me more",
+      "range": {
+        "start": 57820,
+        "end": 59590
+      }
+    },
+    {
+      "line": "'Cause we're addicted to the groove",
+      "range": {
+        "start": 59590,
+        "end": 61630
+      }
+    },
+    {
+      "line": "Oh yeah,, we do it again",
+      "range": {
+        "start": 61630,
+        "end": 63740
+      }
+    },
+    {
+      "line": "We got the moves",
+      "range": {
+        "start": 63740,
+        "end": 64860
+      }
+    },
+    {
+      "line": "We got the moves",
+      "range": {
+        "start": 64860,
+        "end": 65800
+      }
+    },
+    {
+      "line": "When everybody's like",
+      "range": {
+        "start": 65800,
+        "end": 67390
+      }
+    },
+    {
+      "line": "Yesterday we drank too much",
+      "range": {
+        "start": 67390,
+        "end": 68710
+      }
+    },
+    {
+      "line": "Let's do it again",
+      "range": {
+        "start": 68710,
+        "end": 70040
+      }
+    },
+    {
+      "line": "We got the groove",
+      "range": {
+        "start": 70040,
+        "end": 71180
+      }
+    },
+    {
+      "line": "We got the groove",
+      "range": {
+        "start": 71180,
+        "end": 72230
+      }
+    },
+    {
+      "line": "So everybody put your hands straight up",
+      "range": {
+        "start": 72230,
+        "end": 75170
+      }
+    },
+    {
+      "line": "Tonight is the night",
+      "range": {
+        "start": 75170,
+        "end": 76500
+      }
+    },
+    {
+      "line": "We are young",
+      "range": {
+        "start": 76500,
+        "end": 78050
+      }
+    },
+    {
+      "line": "We are free",
+      "range": {
+        "start": 78050,
+        "end": 79840
+      }
+    },
+    {
+      "line": "Sipping on booze on a sunny beach",
+      "range": {
+        "start": 79840,
+        "end": 82720
+      }
+    },
+    {
+      "line": "We're alive",
+      "range": {
+        "start": 82720,
+        "end": 84190
+      }
+    },
+    {
+      "line": "We believe",
+      "range": {
+        "start": 84190,
+        "end": 86290
+      }
+    },
+    {
+      "line": "That summer time memories",
+      "range": {
+        "start": 86290,
+        "end": 88430
+      }
+    },
+    {
+      "line": "Will never fade away",
+      "range": {
+        "start": 88430,
+        "end": 94760
+      }
+    },
+    {
+      "line": "Will never fade away",
+      "range": {
+        "start": 94760,
+        "end": 100920
+      }
+    },
+    {
+      "line": "Will never fade away",
+      "range": {
+        "start": 100920,
+        "end": 102600
+      }
+    },
+    {
+      "line": "We don't need no club",
+      "range": {
+        "start": 102600,
+        "end": 103910
+      }
+    },
+    {
+      "line": "All we need is the sun",
+      "range": {
+        "start": 103910,
+        "end": 105070
+      }
+    },
+    {
+      "line": "Yeah, we will rave like hell",
+      "range": {
+        "start": 105070,
+        "end": 106990
+      }
+    },
+    {
+      "line": "'Till the weekend is done",
+      "range": {
+        "start": 106990,
+        "end": 108380
+      }
+    },
+    {
+      "line": "We got the moves",
+      "range": {
+        "start": 108380,
+        "end": 109560
+      }
+    },
+    {
+      "line": "We got the moves",
+      "range": {
+        "start": 109560,
+        "end": 110770
+      }
+    },
+    {
+      "line": "And everybody put your hands straight up",
+      "range": {
+        "start": 110770,
+        "end": 113430
+      }
+    },
+    {
+      "line": "Tonight is the night",
+      "range": {
+        "start": 113430,
+        "end": 114860
+      }
+    },
+    {
+      "line": "We say",
+      "range": {
+        "start": 114860,
+        "end": 115040
+      }
+    },
+    {
+      "line": "Döp dödödö döp",
+      "range": {
+        "start": 115040,
+        "end": 117230
+      }
+    },
+    {
+      "line": "Döp dödödö döp",
+      "range": {
+        "start": 117230,
+        "end": 118630
+      }
+    },
+    {
+      "line": "Döp dödödö döp",
+      "range": {
+        "start": 118630,
+        "end": 120280
+      }
+    },
+    {
+      "line": "Döp dödödö döp",
+      "range": {
+        "start": 120280,
+        "end": 121800
+      }
+    },
+    {
+      "line": "Döp dödödö döp",
+      "range": {
+        "start": 121800,
+        "end": 123660
+      }
+    },
+    {
+      "line": "Döp dödödö döp",
+      "range": {
+        "start": 123660,
+        "end": 125030
+      }
+    },
+    {
+      "line": "Döp dödödö döp",
+      "range": {
+        "start": 125030,
+        "end": 126990
+      }
+    },
+    {
+      "line": "Döp dödödö döp",
+      "range": {
+        "start": 126990,
+        "end": 128470
+      }
+    },
+    {
+      "line": "Döp dödödö döp",
+      "range": {
+        "start": 128470,
+        "end": 129750
+      }
+    },
+    {
+      "line": "Döp dödödö döp",
+      "range": {
+        "start": 129750,
+        "end": 130740
+      }
+    },
+    {
+      "line": "We got the moves",
+      "range": {
+        "start": 130740,
+        "end": 131830
+      }
+    },
+    {
+      "line": "We got the moves",
+      "range": {
+        "start": 131830,
+        "end": 133270
+      }
+    },
+    {
+      "line": "When everybody's like",
+      "range": {
+        "start": 133270,
+        "end": 134540
+      }
+    },
+    {
+      "line": "Yesterday we drank too much",
+      "range": {
+        "start": 134540,
+        "end": 135920
+      }
+    },
+    {
+      "line": "Let's do it again",
+      "range": {
+        "start": 135920,
+        "end": 137380
+      }
+    },
+    {
+      "line": "We got the groove",
+      "range": {
+        "start": 137380,
+        "end": 138550
+      }
+    },
+    {
+      "line": "We got the groove",
+      "range": {
+        "start": 138550,
+        "end": 139590
+      }
+    },
+    {
+      "line": "So everybody put your hands straight up",
+      "range": {
+        "start": 139590,
+        "end": 142340
+      }
+    },
+    {
+      "line": "Tonight is the night",
+      "range": {
+        "start": 142340,
+        "end": 143810
+      }
+    },
+    {
+      "line": "Everybody hands up",
+      "range": {
+        "start": 143810,
+        "end": 145870
+      }
+    },
+    {
+      "line": "We don't need a damn club",
+      "range": {
+        "start": 145870,
+        "end": 147490
+      }
+    },
+    {
+      "line": "Get down 'cause we're gonna party like hell",
+      "range": {
+        "start": 147490,
+        "end": 150600
+      }
+    },
+    {
+      "line": "And we won't stop until the sun up",
+      "range": {
+        "start": 150600,
+        "end": 152750
+      }
+    },
+    {
+      "line": "Hits our glowing eyes like boom, boom",
+      "range": {
+        "start": 152750,
+        "end": 154530
+      }
+    },
+    {
+      "line": "We gon' put the track on repeat",
+      "range": {
+        "start": 154530,
+        "end": 156340
+      }
+    },
+    {
+      "line": "We are young",
+      "range": {
+        "start": 156340,
+        "end": 157800
+      }
+    },
+    {
+      "line": "We are free",
+      "range": {
+        "start": 157800,
+        "end": 159890
+      }
+    },
+    {
+      "line": "Sipping on booze on a sunny beach",
+      "range": {
+        "start": 159890,
+        "end": 162790
+      }
+    },
+    {
+      "line": "We're alive",
+      "range": {
+        "start": 162790,
+        "end": 164450
+      }
+    },
+    {
+      "line": "We believe",
+      "range": {
+        "start": 164450,
+        "end": 166240
+      }
+    },
+    {
+      "line": "That summer time memories",
+      "range": {
+        "start": 166240,
+        "end": 169310
+      }
+    },
+    {
+      "line": "We are young",
+      "range": {
+        "start": 169310,
+        "end": 170560
+      }
+    },
+    {
+      "line": "We are free",
+      "range": {
+        "start": 170560,
+        "end": 172840
+      }
+    },
+    {
+      "line": "Sipping on booze on a sunny beach",
+      "range": {
+        "start": 172840,
+        "end": 175640
+      }
+    },
+    {
+      "line": "We're alive",
+      "range": {
+        "start": 175640,
+        "end": 176870
+      }
+    },
+    {
+      "line": "We believe",
+      "range": {
+        "start": 176870,
+        "end": 178980
+      }
+    },
+    {
+      "line": "That summer time memories",
+      "range": {
+        "start": 178980,
+        "end": 180890
+      }
+    },
+    {
+      "line": "Will never fade away",
+      "range": {
+        "start": 180890,
+        "end": 187520
+      }
+    },
+    {
+      "line": "Will never fade away",
+      "range": {
+        "start": 187520,
+        "end": 193940
+      }
+    },
+    {
+      "line": "Will never fade away",
+      "range": {
+        "start": 193940,
+        "end": 196380
+      }
+    }
+  ]
+}

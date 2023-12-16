@@ -1,0 +1,48 @@
+POST https://music.youtube.com/youtubei/v1/browse
+Content-Type: application/json
+
+# We use the "ANDROID_MUSIC" client to get the new synced lyrics UI
+{
+  "context": {
+    "client": {
+      "clientName": "ANDROID_MUSIC",
+      "clientVersion": "6.31.55"
+    }
+  },
+  "browseId": "MPLYt_T9PUG9udWyl-2"
+}
+
+###
+
+## request browse id
+POST https://music.youtube.com/youtubei/v1/next
+Content-Type: application/json
+
+{
+  "context": {
+    "client": {
+      "clientName": "ANDROID_MUSIC",
+      "clientVersion": "6.31.55"
+    }
+  },
+  "videoId": "UVXvQtm6ji0"
+}
+
+###
+
+## test search of isrc
+POST https://music.youtube.com/youtubei/v1/search
+Content-Type: application/json
+
+{
+  "context": {
+    "client": {
+      "clientName": "ANDROID_MUSIC",
+      "clientVersion": "6.31.55"
+    }
+  },
+  "query": "GBDHC2227201"
+}
+
+###
+
