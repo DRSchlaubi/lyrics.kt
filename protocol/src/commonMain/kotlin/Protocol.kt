@@ -10,6 +10,7 @@ import kotlinx.serialization.Serializable
  * @property track the [Track] the lyrics are for
  * @property source the source for the lyrics
  * @property lines a list of [lyric lines][Line]
+ * @property text the lyrics as text
  */
 @Serializable
 public data class Lyrics(
@@ -17,6 +18,8 @@ public data class Lyrics(
     val source: String,
     val lines: List<Line>
 ) {
+
+    public val text: String by lazy { lines.joinToString("\n") { it.line } }
 
     /**
      * Representation of a lyrics track.
