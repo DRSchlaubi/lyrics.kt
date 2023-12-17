@@ -25,7 +25,7 @@ jobs:
       - uses: gradle/gradle-build-action@v2
         name: Run Tests
         with:
-          arguments: check
+          arguments: check --stacktrace
       - if: startsWith(github.ref, 'refs/tags/')
         name: Publish to Maven Repo
         run: ./gradlew publish
