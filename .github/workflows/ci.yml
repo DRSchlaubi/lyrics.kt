@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    env:
+      LAVALINK_MAVEN_USER: ${{ secrets.LAVALINK_MAVEN_USER }}
+      LAVALINK_MAVEN_PASSWORD: ${{ secrets.LAVALINK_MAVEN_PASSWORD }}
+      ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_CENTRAL_USER }}
+      ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+      ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.MAVEN_SIGNING_KEY }}
+      ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.MAVEN_SIGNING_KEY_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: gradle/wrapper-validation-action@v1
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: "17"
+      - uses: gradle/gradle-build-action@v2
+        name: Run Tests
+        with:
+          arguments: check
+      - if: startsWith(github.ref, 'refs/tags/')
+        name: Publish to Maven Repo
+        run: ./gradlew publish
