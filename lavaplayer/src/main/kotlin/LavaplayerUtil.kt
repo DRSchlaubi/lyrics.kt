@@ -10,6 +10,9 @@ import dev.schlaubi.lyrics.protocol.Lyrics
 import kotlinx.coroutines.future.future
 import java.util.concurrent.CompletionStage
 
+/**
+ * Finds the lyrics for [track].
+ */
 @JvmName("findLyricsSuspending")
 public suspend fun LyricsClient.findLyrics(track: AudioTrack): Lyrics {
     val videoId = when {
@@ -22,10 +25,18 @@ public suspend fun LyricsClient.findLyrics(track: AudioTrack): Lyrics {
     return requestLyrics(videoId)
 }
 
-public fun LyricsClient.findLyricsAsync(track: AudioTrack): CompletionStage<Lyrics> = future {
-    findLyrics(track)
-}
+/**
+ * Finds the lyrics for [track].
+ *
+ * @see CompletionStage
+ */
+public fun LyricsClient.findLyricsAsync(track: AudioTrack): CompletionStage<Lyrics> = future { findLyrics(track) }
 
+/**
+ * Finds the lyrics for [track].
+ *
+ * **Important:** This method blocks the current thread
+ */
 @JvmName("findLyrics")
 public fun LyricsClient.findLyricsBlocking(track: AudioTrack): Lyrics =
     findLyricsAsync(track).toCompletableFuture().join()
