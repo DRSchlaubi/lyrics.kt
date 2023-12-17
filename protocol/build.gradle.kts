@@ -1,3 +1,7 @@
+import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.KotlinMultiplatform
+import com.vanniktech.maven.publish.SonatypeHost
+
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.plugin.serialization)
@@ -20,4 +24,9 @@ kotlin {
             }
         }
     }
+}
+
+mavenPublishing {
+    configure(KotlinMultiplatform(JavadocJar.Dokka("dokkaJavadoc")))
+    publishToMavenCentral(SonatypeHost.S01, true)
 }

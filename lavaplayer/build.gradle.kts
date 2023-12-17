@@ -1,3 +1,7 @@
+import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.KotlinJvm
+import com.vanniktech.maven.publish.SonatypeHost
+
 plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.dokka)
@@ -14,4 +18,9 @@ kotlin {
 dependencies {
     api(projects.client)
     implementation(libs.lavaplayer)
+}
+
+mavenPublishing {
+    configure(KotlinJvm(JavadocJar.Dokka("dokkaJavadoc")))
+    publishToMavenCentral(SonatypeHost.S01, true)
 }

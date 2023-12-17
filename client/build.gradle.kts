@@ -1,3 +1,6 @@
+import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.KotlinMultiplatform
+import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.targets.jvm.tasks.KotlinJvmTest
 
 plugins {
@@ -46,4 +49,9 @@ tasks {
     withType<KotlinJvmTest> {
         useJUnitPlatform()
     }
+}
+
+mavenPublishing {
+    configure(KotlinMultiplatform(JavadocJar.Dokka("dokkaJavadoc")))
+    publishToMavenCentral(SonatypeHost.S01, true)
 }
