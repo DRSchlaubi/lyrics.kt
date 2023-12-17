@@ -29,3 +29,8 @@ jobs:
       - if: startsWith(github.ref, 'refs/tags/')
         name: Publish to Maven Repo
         run: ./gradlew publish
+      - name: Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: lavalink/build/libs/lavalink-*.jar
