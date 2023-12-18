@@ -37,12 +37,15 @@ lavalink:
 // GET /v4/sessions/{sessionId}/players/{guildId}/lyrics
 
 {
+  "type": "timed", // can also be text
   "track": {
     "title": "We Got the Moves",
     "author": "Electric Callboy",
     "album": "We Got the Moves"
   },
   "source": "LyricFind",
+  "text": "<lyrics>", // Only present for type text
+  // Only present for type timed
   "lines": [
     {
       "line": "♪",

@@ -1,7 +1,8 @@
 package dev.schlaubi.lyrics.protocol
 
-import dev.schlaubi.lyrics.protocol.Lyrics.Line
 import dev.schlaubi.lyrics.protocol.Lyrics.Track
+import dev.schlaubi.lyrics.protocol.TimedLyrics.Line
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
@@ -9,17 +10,13 @@ import kotlinx.serialization.Serializable
  *
  * @property track the [Track] the lyrics are for
  * @property source the source for the lyrics
- * @property lines a list of [lyric lines][Line]
  * @property text the lyrics as text
  */
 @Serializable
-public data class Lyrics(
-    val track: Track,
-    val source: String,
-    val lines: List<Line>
-) {
-
-    public val text: String by lazy { lines.joinToString("\n") { it.line } }
+public sealed interface Lyrics {
+    public val track: Track
+    public val source: String
+    public val text: String
 
     /**
      * Representation of a lyrics track.
@@ -30,6 +27,21 @@ public data class Lyrics(
      */
     @Serializable
     public data class Track(val title: String, val author: String, val album: String)
+}
+
+/**
+ * Representation of a track's lyrics with timestamps.
+ *
+ * @property lines a list of [lyric lines][Line]
+ */
+@Serializable
+@SerialName("timed")
+public data class TimedLyrics(
+    override val track: Track,
+    override val source: String,
+    val lines: List<Line>
+) : Lyrics {
+    override val text: String by lazy { lines.joinToString("\n") { it.line } }
 
     /**
      * Representation of a lyrics line.
@@ -43,6 +55,21 @@ public data class Lyrics(
         val range: SerializableLongRange
     )
 }
+
+/**
+ * Represents the lyrics of a track as text.
+ *
+ * @param track the track the lyrics are for
+ * @param source the source for the lyrics
+ * @param text the lyrics as text
+ */
+@Serializable
+@SerialName("text")
+public data class TextLyrics(
+    override val track: Track,
+    override val source: String,
+    override val text: String
+) : Lyrics
 
 /**
  * Representation of a search track.

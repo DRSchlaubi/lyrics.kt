@@ -1,6 +1,8 @@
 package dev.schlaubi.lyrics.internal.util
 
+import dev.schlaubi.lyrics.LyricsNotFoundException
 import dev.schlaubi.lyrics.protocol.Lyrics
+import dev.schlaubi.lyrics.protocol.TimedLyrics
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonObject
 
@@ -16,7 +18,7 @@ internal val JsonObject.browseEndpoint: String?
         ?.getJsonObject("browseEndpoint")
         ?.getString("browseId")
 
-internal val JsonObject.lyricsData: JsonObject
+internal val JsonObject.lyricsData: JsonObject?
     get() = getJsonObject("contents")
         ?.getJsonObject("elementRenderer")
         ?.getJsonObject("newElement")
@@ -24,26 +26,33 @@ internal val JsonObject.lyricsData: JsonObject
         ?.getJsonObject("componentType")
         ?.getJsonObject("model")
         ?.getJsonObject("timedLyricsModel")
-        ?.getJsonObject("lyricsData") ?: notFound("lyricsData")
+        ?.getJsonObject("lyricsData")
 
 internal val JsonObject.track: Lyrics.Track
     get() {
         val lockScreen = getJsonObject("lockScreen")?.getJsonObject("lockScreenRenderer")
-            ?: notFound("lockscreen")
+            ?: notFound()
 
-        val title = lockScreen.getRunningText("title") ?: notFound("title")
-        val author = lockScreen.getRunningText("shortBylineText") ?: notFound("shortBylineText")
-        val album = lockScreen.getRunningText("albumText") ?: notFound("albumText")
+        val title = lockScreen.getRunningText("title") ?: notFound()
+        val author = lockScreen.getRunningText("shortBylineText") ?: notFound()
+        val album = lockScreen.getRunningText("albumText") ?: notFound()
 
         return Lyrics.Track(title, author, album)
     }
 
 internal val JsonObject.source: String
-    get() = getString("sourceMessage")?.substringAfter(": ") ?: notFound("sourceMessage")
+    get() = getString("sourceMessage")?.substringAfter(": ") ?: notFound()
 
-internal val JsonObject.lines:List<Lyrics.Line>
+internal val JsonObject.musicDescriptionShelfRenderer
+    get() = getJsonObject("contents")
+        ?.getJsonObject("sectionListRenderer")
+        ?.getJsonArray("contents")
+        ?.getJsonObject(0)
+        ?.getJsonObject("musicDescriptionShelfRenderer")
+
+internal val JsonObject.lines: List<TimedLyrics.Line>
     get() {
-        val linesData = getJsonArray("timedLyricsData")!!
+        val linesData = getJsonArray("timedLyricsData") ?: notFound()
 
         return linesData.map {
             val json = it.jsonObject
@@ -54,8 +63,8 @@ internal val JsonObject.lines:List<Lyrics.Line>
                 start..end
             } ?: error("Could not calculate range")
 
-            Lyrics.Line(line, range)
+            TimedLyrics.Line(line, range)
         }
     }
-// /contents/tabbedSearchResultsRenderer/tabs/0/tabRenderer/content/sectionListRenderer/contents/1/musicCardShelfRenderer/buttons/0/buttonRenderer/command/watchEndpoint/videoId
-private fun notFound(key: String): Nothing = error("Could not find expected key: $key")
+
+internal fun notFound(): Nothing = throw LyricsNotFoundException()

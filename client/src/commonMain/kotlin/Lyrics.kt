@@ -4,6 +4,8 @@ import dev.schlaubi.lyrics.internal.model.*
 import dev.schlaubi.lyrics.internal.util.*
 import dev.schlaubi.lyrics.protocol.Lyrics
 import dev.schlaubi.lyrics.protocol.SearchTrack
+import dev.schlaubi.lyrics.protocol.TextLyrics
+import dev.schlaubi.lyrics.protocol.TimedLyrics
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.plugins.*
@@ -48,9 +50,16 @@ public class LyricsClient : Closeable, CoroutineScope {
         val browseResult = request(MusicApi.Browse(), BrowseRequest(mobileYoutubeMusicContext, browseId))
 
         val lyricsData = browseResult.lyricsData
-        val source = lyricsData.source
+        return if (lyricsData != null) {
+            val source = lyricsData.source
+            TimedLyrics(nextPage.track, source, lyricsData.lines)
+        } else {
+            val renderer = browseResult.musicDescriptionShelfRenderer ?: notFound()
+            val text = renderer.getRunningText("description")!!
+            val source = renderer.getRunningText("footer")!!
+            TextLyrics(nextPage.track, source, text)
+        }
 
-        return Lyrics(nextPage.track, source, lyricsData.lines)
     }
 
     /**
