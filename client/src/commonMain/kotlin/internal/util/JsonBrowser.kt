@@ -12,6 +12,10 @@ internal fun JsonObject.getLong(key: String): Long? {
     val primitive = this[key]?.jsonPrimitive ?: return null
     return primitive.content.toLong()
 }
+internal fun JsonObject.getInt(key: String): Int? {
+    val primitive = this[key]?.jsonPrimitive ?: return null
+    return primitive.content.toInt()
+}
 
 internal fun JsonObject.getJsonObject(key: String) = this[key]?.jsonObject
 internal fun JsonArray.getJsonObject(index: Int) = getOrNull(index)?.jsonObject

@@ -3,6 +3,7 @@ package dev.schlaubi.lyrics.internal.util
 import dev.schlaubi.lyrics.LyricsNotFoundException
 import dev.schlaubi.lyrics.protocol.Lyrics
 import dev.schlaubi.lyrics.protocol.TimedLyrics
+import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonObject
 
@@ -28,17 +29,16 @@ internal val JsonObject.lyricsData: JsonObject?
         ?.getJsonObject("timedLyricsModel")
         ?.getJsonObject("lyricsData")
 
-internal val JsonObject.track: Lyrics.Track
-    get() {
-        val lockScreen = getJsonObject("lockScreen")?.getJsonObject("lockScreenRenderer")
-            ?: notFound()
+internal fun JsonObject.getTracks(albumArt: List<Lyrics.Track.AlbumArt>): Lyrics.Track {
+    val lockScreen = getJsonObject("lockScreen")?.getJsonObject("lockScreenRenderer")
+        ?: notFound()
 
-        val title = lockScreen.getRunningText("title") ?: notFound()
-        val author = lockScreen.getRunningText("shortBylineText") ?: notFound()
-        val album = lockScreen.getRunningText("albumText") ?: notFound()
+    val title = lockScreen.getRunningText("title") ?: notFound()
+    val author = lockScreen.getRunningText("shortBylineText") ?: notFound()
+    val album = lockScreen.getRunningText("albumText") ?: notFound()
 
-        return Lyrics.Track(title, author, album)
-    }
+    return Lyrics.Track(title, author, album, albumArt)
+}
 
 internal val JsonObject.source: String
     get() = getString("sourceMessage")?.substringAfter(": ") ?: notFound()
@@ -49,6 +49,32 @@ internal val JsonObject.musicDescriptionShelfRenderer
         ?.getJsonArray("contents")
         ?.getJsonObject(0)
         ?.getJsonObject("musicDescriptionShelfRenderer")
+
+internal val JsonObject.thumbnails: JsonArray?
+    get() = getJsonObject("contents")
+        ?.getJsonObject("singleColumnMusicWatchNextResultsRenderer")
+        ?.getJsonObject("tabbedRenderer")
+        ?.getJsonObject("watchNextTabbedResultsRenderer")
+        ?.getJsonArray("tabs")
+        ?.getJsonObject(0)
+        ?.getJsonObject("tabRenderer")
+        ?.getJsonObject("content")
+        ?.getJsonObject("musicQueueRenderer")
+        ?.getJsonObject("content")
+        ?.getJsonObject("playlistPanelRenderer")
+        ?.getJsonArray("contents")
+        ?.getJsonObject(0)
+        ?.getJsonObject("playlistPanelVideoRenderer")
+        ?.getJsonObject("thumbnail")
+        ?.getJsonArray("thumbnails")
+
+internal fun JsonObject.toAlbumArt(): Lyrics.Track.AlbumArt {
+    val url = getString("url")!!
+    val height = getInt("height")!!
+    val width = getInt("width")!!
+
+    return Lyrics.Track.AlbumArt(url, height, width)
+}
 
 internal val JsonObject.lines: List<TimedLyrics.Line>
     get() {

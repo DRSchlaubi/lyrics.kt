@@ -26,7 +26,26 @@ public sealed interface Lyrics {
      * @property album the album the track is in
      */
     @Serializable
-    public data class Track(val title: String, val author: String, val album: String)
+    public data class Track(
+        val title: String,
+        val author: String,
+        val album: String,
+        val albumArt: List<AlbumArt>
+    ) {
+        /**
+         * Representation of an album art.
+         *
+         * @property url the cdn url of the image
+         * @property height the physical height of the image
+         * @property width the physical width of the image
+         */
+        @Serializable
+        public data class AlbumArt(
+            val url: String,
+            val height: Int,
+            val width: Int
+        )
+    }
 }
 
 /**

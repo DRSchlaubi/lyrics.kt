@@ -37,21 +37,32 @@ lavalink:
 // GET /v4/sessions/{sessionId}/players/{guildId}/lyrics
 
 {
-  "type": "timed", // can also be text
+  "type": "timed",
+  // can also be text
   "track": {
     "title": "We Got the Moves",
     "author": "Electric Callboy",
-    "album": "We Got the Moves"
+    "album": "We Got the Moves",
+    "albumArt": [
+      {
+        "url": "https://lh3.googleusercontent.com/rDaGBvVRyBbHKJuQFFfIUuCLU36OuHHTjDz2u9xDwbIgD2MWM_P6L2L01IOOtoJvi7ks43OFeCqx0cRp=w60-h60-l90-rj",
+        "height": 60,
+        "width": 60
+      }
+    ]
   },
   "source": "LyricFind",
-  "text": "<lyrics>", // Only present for type text
+  "text": "<lyrics>",
+  // Only present for type text
   // Only present for type timed
   "lines": [
     {
       "line": "♪",
       "range": {
-        "start": 0, // start timestamp in ms since track start
-        "end": 6510 // end timestamp in ms since track start
+        "start": 0,
+        // start timestamp in ms since track start
+        "end": 6510
+        // end timestamp in ms since track start
       }
     },
     {

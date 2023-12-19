@@ -1,4 +1,5 @@
 import dev.schlaubi.lyrics.protocol.Lyrics
+import dev.schlaubi.lyrics.protocol.TimedLyrics
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.junit.jupiter.api.Test

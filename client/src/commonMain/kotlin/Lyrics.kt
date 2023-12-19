@@ -50,16 +50,16 @@ public class LyricsClient : Closeable, CoroutineScope {
         val browseResult = request(MusicApi.Browse(), BrowseRequest(mobileYoutubeMusicContext, browseId))
 
         val lyricsData = browseResult.lyricsData
+        val albumArt = nextPage.thumbnails?.map { it.jsonObject.toAlbumArt() } ?: emptyList()
         return if (lyricsData != null) {
             val source = lyricsData.source
-            TimedLyrics(nextPage.track, source, lyricsData.lines)
+            TimedLyrics(nextPage.getTracks(albumArt), source, lyricsData.lines)
         } else {
             val renderer = browseResult.musicDescriptionShelfRenderer ?: notFound()
             val text = renderer.getRunningText("description")!!
             val source = renderer.getRunningText("footer")!!
-            TextLyrics(nextPage.track, source, text)
+            TextLyrics(nextPage.getTracks(albumArt), source, text)
         }
-
     }
 
     /**
