@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.server.ResponseStatusException
 
 @RestController
-class RestHandler(private val socketServer: SocketServer) {
+class RestHandler(private val socketServer: SocketServer, private val config: Config) {
     private val client = LyricsClient()
 
     @GetMapping(value = ["/v4/lyrics/{videoId}"])
@@ -29,7 +29,7 @@ class RestHandler(private val socketServer: SocketServer) {
 
     @GetMapping(value = ["/v4/lyrics/search/{query}"])
     fun searchLyrics(@PathVariable query: String): List<SearchTrack> = runBlocking {
-        client.search(query)
+        client.search(query, config.countryCode)
     }
 
     @GetMapping(value = ["/v4/sessions/{sessionId}/players/{guildId}/lyrics"])

@@ -33,15 +33,17 @@ Content-Type: application/json
 ## test search of isrc
 POST https://music.youtube.com/youtubei/v1/search
 Content-Type: application/json
+Accept-Language: en
 
 {
   "context": {
     "client": {
-      "clientName": "ANDROID_MUSIC",
-      "clientVersion": "6.31.55"
+      "clientName": "WEB_REMIX",
+      "clientVersion": "1.20230102.01.00",
+      "hl": "de"
     }
   },
-  "query": "GBDHC2227201"
+  "query": "frx762175060"
 }
 
 ###

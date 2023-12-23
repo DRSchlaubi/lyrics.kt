@@ -19,7 +19,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
 import kotlin.coroutines.CoroutineContext
 
@@ -65,12 +67,15 @@ public class LyricsClient : Closeable, CoroutineScope {
     /**
      * Searches for [query].
      *
+     * @param region the region used for the search
+     *
      * @see SearchTrack
      */
-    public suspend fun search(query: String): List<SearchTrack> {
-        val result = request(MusicApi.Search(), SearchRequest(mobileYoutubeMusicContext, query))
+    public suspend fun search(query: String, region: String? = null): List<SearchTrack> {
+        val result = request(MusicApi.Search(), SearchRequest(mobileYoutubeMusicContext(region), query))
 
-        return result
+        // /contents/tabbedSearchResultsRenderer/tabs/0/tabRenderer/content/sectionListRenderer/contents/1/musicCardShelfRenderer/title/runs/0/navigationEndpoint/watchEndpoint/videoId
+        val section = result
             .getJsonObject("contents")
             ?.getJsonObject("tabbedSearchResultsRenderer")
             ?.getJsonArray("tabs")
@@ -78,10 +83,31 @@ public class LyricsClient : Closeable, CoroutineScope {
             ?.getJsonObject("tabRenderer")
             ?.getJsonObject("content")
             ?.getJsonObject("sectionListRenderer")
-            ?.getJsonArray("contents")
-            ?.firstOrNull {
-                it is JsonObject && it.getJsonObject("musicShelfRenderer")?.getRunningText("title") == "Songs"
+            ?.getJsonArray("contents") ?: JsonArray(emptyList())
+        val topResult = section.first { it.jsonObject.getJsonObject("musicCardShelfRenderer") != null }
+            .jsonObject.getJsonObject("musicCardShelfRenderer")!!.let { renderer ->
+                val title = renderer.getRunningText("title")!!
+                val videoId =
+                    renderer.getJsonArray("buttons")
+                        ?.getJsonObject(0)
+                        ?.getJsonObject("buttonRenderer")
+                        ?.getJsonObject("command")
+                        ?.getJsonObject("watchEndpoint")
+                        ?.getString("videoId")!!
+
+                SearchTrack(videoId, title)
             }
+
+        val otherResults = (section.firstOrNull {
+            it.jsonObject.getJsonObject("musicShelfRenderer")
+                ?.getJsonArray("contents")?.any { content ->
+                    content.jsonObject.getJsonObject("musicTwoColumnItemRenderer")?.getJsonObject("navigationEndpoint")
+                        ?.getJsonObject("watchEndpoint")
+                        ?.getString("videoId") != null
+                } == true
+        } ?: JsonArray(emptyList())).jsonArray.firstOrNull {
+            it is JsonObject && it.getJsonObject("musicShelfRenderer")?.getRunningText("title") == "Songs"
+        }
             ?.jsonObject
             ?.getJsonObject("musicShelfRenderer")
             ?.getJsonArray("contents")
@@ -96,6 +122,8 @@ public class LyricsClient : Closeable, CoroutineScope {
 
                 SearchTrack(videoId, title)
             } ?: emptyList()
+
+        return listOfNotNull(topResult) + otherResults
     }
 
     override fun close() {
