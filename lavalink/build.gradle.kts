@@ -11,7 +11,13 @@ repositories {
 }
 
 dependencies {
-    implementation(projects.lavaplayer)
+    implementation(projects.client) {
+        exclude(group = "io.ktor", module = "ktor-client-okhttp")
+    }
+    implementation(libs.ktor.client.java)
+    implementation(projects.lavaplayer) {
+        isTransitive = false
+    }
     compileOnly(libs.lavalink.server)
 }
 

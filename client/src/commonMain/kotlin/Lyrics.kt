@@ -86,32 +86,28 @@ public class LyricsClient : Closeable, CoroutineScope {
             ?.getJsonArray("contents") ?: JsonArray(emptyList())
         val topResult = section.first { it.jsonObject.getJsonObject("musicCardShelfRenderer") != null }
             .jsonObject.getJsonObject("musicCardShelfRenderer")!!.let { renderer ->
-                val title = renderer.getRunningText("title")!!
+                val title = renderer.getRunningText("title") ?: return@let null
                 val videoId =
                     renderer.getJsonArray("buttons")
                         ?.getJsonObject(0)
                         ?.getJsonObject("buttonRenderer")
                         ?.getJsonObject("command")
                         ?.getJsonObject("watchEndpoint")
-                        ?.getString("videoId")!!
+                        ?.getString("videoId") ?: return@let null
 
                 SearchTrack(videoId, title)
             }
 
-        val otherResults = (section.firstOrNull {
+        val otherResults = ((section.firstOrNull {
             it.jsonObject.getJsonObject("musicShelfRenderer")
                 ?.getJsonArray("contents")?.any { content ->
-                    content.jsonObject.getJsonObject("musicTwoColumnItemRenderer")?.getJsonObject("navigationEndpoint")
+                    content.jsonObject.getJsonObject("musicTwoColumnItemRenderer")
+                        ?.getJsonObject("navigationEndpoint")
                         ?.getJsonObject("watchEndpoint")
                         ?.getString("videoId") != null
                 } == true
-        } ?: JsonArray(emptyList())).jsonArray.firstOrNull {
-            it is JsonObject && it.getJsonObject("musicShelfRenderer")?.getRunningText("title") == "Songs"
-        }
-            ?.jsonObject
-            ?.getJsonObject("musicShelfRenderer")
-            ?.getJsonArray("contents")
-            ?.map { item ->
+        }?.jsonObject?.getJsonObject("musicShelfRenderer")?.getJsonArray("contents") ?: JsonArray(emptyList())))
+            .map { item ->
                 val renderer = item.jsonObject
                     .getJsonObject("musicTwoColumnItemRenderer") ?: error("")
                 val title = renderer.getRunningText("title")!!
