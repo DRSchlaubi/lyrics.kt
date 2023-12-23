@@ -16,7 +16,7 @@ client.requestLyrics(videoId)
 
 ```java
 var client = new LyricsClient();
-LavaplayerUtil.findLyrics(player.getPlayingTrack());
+LavaplayerUtil.findLyrics(client, player.getPlayingTrack());
 ```
 
 # Using with Lavalink
@@ -29,6 +29,9 @@ lavalink:
     - dependency: "dev.schlaubi.lyrics:lavalink:x.y.z"
       repository: "https://maven.lavalink.dev/releases" # this is optional for lavalink v4.0.0-beta.5 or greater
       snapshot: false # set to true if you want to use snapshot builds (see below)
+plugins:
+  lyrics:
+    countryCode: de #country code for resolving isrc tracks
 ```
 
 ## API for clients
