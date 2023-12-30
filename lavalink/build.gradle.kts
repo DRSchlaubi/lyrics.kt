@@ -32,6 +32,13 @@ mavenPublishing {
     configure(KotlinJvm(JavadocJar.None()))
 }
 
+tasks {
+    jar {
+        exclude("org/intellij/**", "org/jetbrains/**", "org/slf4j/**", "kotlin/**", "kotlinx/serialization/**")
+        exclude("DebugProbesKt.bin")
+    }
+}
+
 publishing {
     repositories {
         maven("https://maven.lavalink.dev/releases") {
