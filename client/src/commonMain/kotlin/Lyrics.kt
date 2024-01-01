@@ -72,7 +72,7 @@ public class LyricsClient : Closeable, CoroutineScope {
      * @see SearchTrack
      */
     public suspend fun search(query: String, region: String? = null): List<SearchTrack> {
-        val result = request(MusicApi.Search(), SearchRequest(mobileYoutubeMusicContext(region), query))
+        val result = request(MusicApi.Search(), SearchRequest(mobileYoutubeMusicContext(region), query, onlyTracksSearchParam))
 
         // /contents/tabbedSearchResultsRenderer/tabs/0/tabRenderer/content/sectionListRenderer/contents/1/musicCardShelfRenderer/title/runs/0/navigationEndpoint/watchEndpoint/videoId
         val section = result
@@ -84,19 +84,6 @@ public class LyricsClient : Closeable, CoroutineScope {
             ?.getJsonObject("content")
             ?.getJsonObject("sectionListRenderer")
             ?.getJsonArray("contents") ?: JsonArray(emptyList())
-        val topResult = section.first { it.jsonObject.getJsonObject("musicCardShelfRenderer") != null }
-            .jsonObject.getJsonObject("musicCardShelfRenderer")!!.let { renderer ->
-                val title = renderer.getRunningText("title") ?: return@let null
-                val videoId =
-                    renderer.getJsonArray("buttons")
-                        ?.getJsonObject(0)
-                        ?.getJsonObject("buttonRenderer")
-                        ?.getJsonObject("command")
-                        ?.getJsonObject("watchEndpoint")
-                        ?.getString("videoId") ?: return@let null
-
-                SearchTrack(videoId, title)
-            }
 
         val otherResults = ((section.firstOrNull {
             it.jsonObject.getJsonObject("musicShelfRenderer")
@@ -117,9 +104,9 @@ public class LyricsClient : Closeable, CoroutineScope {
                         ?.getString("videoId")!!
 
                 SearchTrack(videoId, title)
-            } ?: emptyList()
+            }
 
-        return listOfNotNull(topResult) + otherResults
+        return otherResults
     }
 
     override fun close() {

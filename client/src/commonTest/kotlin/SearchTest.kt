@@ -12,4 +12,13 @@ class SearchTest {
         val track= result.first()
         assertEquals("8ePP9MTcO5w", track.videoId)
     }
+
+    @Test
+    fun `search for x`() = withClient {
+        val result = search("high hopes", "de")
+        println(result)
+
+        val track= result.first()
+        assertEquals("GJY8OMJXRAk", track.videoId)
+    }
 }
