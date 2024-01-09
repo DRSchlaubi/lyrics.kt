@@ -19,7 +19,7 @@ class RestHandler(private val socketServer: SocketServer, private val config: Co
     private val client = LyricsClient()
 
     @GetMapping(value = ["/v4/lyrics/{videoId}"])
-    fun getLyrics(@PathVariable videoId: String): Lyrics = runBlocking {
+    fun getLyrics(@PathVariable("videoId") videoId: String): Lyrics = runBlocking {
         try {
             client.requestLyrics(videoId)
         } catch (e: LyricsNotFoundException) {
@@ -28,12 +28,12 @@ class RestHandler(private val socketServer: SocketServer, private val config: Co
     }
 
     @GetMapping(value = ["/v4/lyrics/search/{query}"])
-    fun searchLyrics(@PathVariable query: String): List<SearchTrack> = runBlocking {
+    fun searchLyrics(@PathVariable("query") query: String): List<SearchTrack> = runBlocking {
         client.search(query, config.countryCode)
     }
 
     @GetMapping(value = ["/v4/sessions/{sessionId}/players/{guildId}/lyrics"])
-    fun getLyricsOfPlayingTrack(@PathVariable sessionId: String, @PathVariable guildId: Long) = runBlocking {
+    fun getLyricsOfPlayingTrack(@PathVariable("sessionId") sessionId: String, @PathVariable("guildId") guildId: Long) = runBlocking {
         val track = socketContext(socketServer, sessionId).getPlayer(guildId).track
             ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Not currently playing anything")
 
