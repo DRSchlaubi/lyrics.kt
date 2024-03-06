@@ -27,6 +27,7 @@ lavalinkPlugin {
     apiVersion = libs.versions.lavalink.api
     serverVersion = libs.versions.lavalink.server
     path = "dev.schlaubi.lyrics.lavalink"
+    configurePublishing = false
 }
 
 mavenPublishing {
