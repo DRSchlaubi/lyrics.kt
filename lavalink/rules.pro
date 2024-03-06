@@ -1,5 +1,6 @@
 # These references are only used when debugging
--dontwarn io.ktor.util.debug.**
+-dontwarn io.ktor.**
+-dontwarn dev.schlaubi.lyrics.lavaplayer.LavaplayerUtil
 # Compile only annotations
 -dontwarn kotlinx.coroutines.**
 -dontwarn lavalink.server.**
