@@ -38,20 +38,9 @@ val proguard by tasks.registering(ProGuardTask::class)
 
 tasks {
     jar {
-        archiveClassifier = "fat"
         exclude("org/intellij/**", "org/jetbrains/**", "org/slf4j/**", "kotlin/**", "kotlinx/serialization/**")
         exclude("**/DebugProbesKt.bin")
         exclude("**/_COROUTINE")
-    }
-
-    proguard {
-        libraryjars(configurations.compileClasspath)
-        injars(jar)
-        outjars(layout.buildDirectory.file("libs/lavalink-$version.jar"))
-        configuration(file("rules.pro"))
-
-        jmod("base")
-        jmod("net.http")
     }
 }
 
@@ -64,19 +53,4 @@ publishing {
             }
         }
     }
-
-    publications {
-        named<MavenPublication>("maven") {
-            artifact(proguard)
-        }
-    }
 }
-
-fun ProGuardTask.jmod(name: String) =
-    libraryjars(
-        mapOf(
-            "jarfilter" to "!**.jar",
-            "filter" to "!module-info.class"
-        ),
-        "${System.getProperty("java.home")}/jmods/java.$name.jmod",
-    )
