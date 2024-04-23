@@ -2,7 +2,6 @@
 
 package dev.schlaubi.lyrics.lavaplayer
 
-import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioTrack
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack
 import dev.schlaubi.lyrics.LyricsClient
 import dev.schlaubi.lyrics.LyricsNotFoundException
