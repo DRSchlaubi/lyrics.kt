@@ -16,7 +16,7 @@ import java.util.concurrent.CompletionStage
 @JvmName("findLyricsSuspending")
 public suspend fun LyricsClient.findLyrics(track: AudioTrack): Lyrics {
     val videoId = when {
-        track is YoutubeAudioTrack -> track.info.identifier
+        track.sourceManager.sourceName == "youtube" -> track.info.identifier
         track.info.isrc != null -> search(track.info.isrc).firstOrNull()?.videoId ?: throw LyricsNotFoundException()
         else -> search("${track.info.title} - ${track.info.author}").firstOrNull()?.videoId
             ?: throw LyricsNotFoundException()
