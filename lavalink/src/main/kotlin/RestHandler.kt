@@ -1,13 +1,12 @@
 package dev.schlaubi.lyrics.lavalink
 
+import dev.arbjerg.lavalink.api.ISocketServer
 import dev.schlaubi.lyrics.LyricsClient
 import dev.schlaubi.lyrics.LyricsNotFoundException
 import dev.schlaubi.lyrics.lavaplayer.findLyrics
 import dev.schlaubi.lyrics.protocol.Lyrics
 import dev.schlaubi.lyrics.protocol.SearchTrack
 import kotlinx.coroutines.runBlocking
-import lavalink.server.io.SocketServer
-import lavalink.server.util.socketContext
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.server.ResponseStatusException
 
 @RestController
-class RestHandler(private val socketServer: SocketServer, private val config: Config) {
+class RestHandler(private val socketServer: ISocketServer, private val config: Config) {
     private val client = LyricsClient()
 
     @GetMapping(value = ["/v4/lyrics/{videoId}"])
@@ -34,7 +33,7 @@ class RestHandler(private val socketServer: SocketServer, private val config: Co
 
     @GetMapping(value = ["/v4/sessions/{sessionId}/players/{guildId}/lyrics"])
     fun getLyricsOfPlayingTrack(@PathVariable("sessionId") sessionId: String, @PathVariable("guildId") guildId: Long) = runBlocking {
-        val track = socketContext(socketServer, sessionId).getPlayer(guildId).track
+        val track = socketServer.sessions[sessionId]?.getPlayer(guildId)?.track
             ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Not currently playing anything")
 
         try {

@@ -19,7 +19,6 @@ dependencies {
     implementation(projects.lavaplayer) {
         isTransitive = false
     }
-    compileOnly(libs.lavalink.server)
 }
 
 lavalinkPlugin {
