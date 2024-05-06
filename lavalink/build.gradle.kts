@@ -1,5 +1,3 @@
-import com.vanniktech.maven.publish.JavadocJar
-import com.vanniktech.maven.publish.KotlinJvm
 import proguard.gradle.ProGuardTask
 
 plugins {
@@ -16,6 +14,7 @@ dependencies {
         exclude(group = "io.ktor", module = "ktor-client-okhttp")
     }
     implementation(libs.ktor.client.java)
+    implementation(projects.protocol)
     implementation(projects.lavaplayer) {
         isTransitive = false
     }
