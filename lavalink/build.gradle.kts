@@ -26,11 +26,7 @@ lavalinkPlugin {
     apiVersion = libs.versions.lavalink.api
     serverVersion = libs.versions.lavalink.server
     path = "dev.schlaubi.lyrics.lavalink"
-    configurePublishing = false
-}
-
-mavenPublishing {
-    configure(KotlinJvm(JavadocJar.None()))
+    configurePublishing = true
 }
 
 val proguard by tasks.registering(ProGuardTask::class)
