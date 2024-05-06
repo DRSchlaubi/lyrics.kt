@@ -13,6 +13,7 @@ dependencies {
     implementation(projects.client) {
         exclude(group = "io.ktor", module = "ktor-client-okhttp")
     }
+    implementation(libs.ktor.client.content.negotiation)
     implementation(libs.ktor.client.java)
     implementation(projects.protocol)
     implementation(projects.lavaplayer) {
