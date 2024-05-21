@@ -10,9 +10,8 @@ repositories {
 }
 
 dependencies {
-    implementation(projects.client) {
-        exclude(group = "io.ktor", module = "ktor-client-okhttp")
-    }
+    implementation(projects.client)
+    implementation(libs.ktor.client.java)
     implementation(projects.protocol)
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.resources)
