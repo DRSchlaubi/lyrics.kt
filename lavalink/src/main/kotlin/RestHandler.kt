@@ -21,7 +21,7 @@ class RestHandler(private val socketServer: ISocketServer, private val config: C
     fun getLyrics(@PathVariable("videoId") videoId: String): Lyrics = runBlocking {
         try {
             client.requestLyrics(videoId)
-        } catch (e: LyricsNotFoundException) {
+        } catch (_: LyricsNotFoundException) {
             throw ResponseStatusException(HttpStatus.NOT_FOUND)
         }
     }
@@ -38,7 +38,7 @@ class RestHandler(private val socketServer: ISocketServer, private val config: C
 
         try {
             client.findLyrics(track)
-        } catch (e: LyricsNotFoundException) {
+        } catch (_: LyricsNotFoundException) {
             throw ResponseStatusException(HttpStatus.NOT_FOUND)
         }
     }

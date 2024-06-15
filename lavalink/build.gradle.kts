@@ -34,10 +34,13 @@ val proguard by tasks.registering(ProGuardTask::class)
 
 tasks {
     jar {
-        exclude("org/intellij/**", "org/jetbrains/**", "org/slf4j/**", "kotlin/**", "kotlinx/serialization/**")
-        exclude("**/DebugProbesKt.bin")
-        exclude("**/_COROUTINE")
+        include("dev/schlaubi/lyrics/**")
+        include("io/ktor/**")
+        include("kotlinx/coroutines/**")
+        include("lavalink-plugins/**")
+        include("META-INF/**")
     }
+
 }
 
 publishing {

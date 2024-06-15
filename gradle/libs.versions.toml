@@ -1,8 +1,8 @@
 [versions]
-ktor = "2.3.10"
-kotlin = "1.9.23"
-lavalink-api = "4.0.5"
-lavalink-server = "4.0.5"
+ktor = "2.3.11"
+kotlin = "2.0.0"
+lavalink-api = "4.0.6"
+lavalink-server = "4.0.6"
 coroutines = "1.8.0"
 
 
@@ -16,9 +16,9 @@ ktor-serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serializatio
 
 kotlinx-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
-kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version = "1.6.3" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version = "1.7.0" }
 
-lavaplayer = { group = "dev.arbjerg", name = "lavaplayer", version = "2.1.2" }
+lavaplayer = { group = "dev.arbjerg", name = "lavaplayer", version = "2.2.0" }
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
