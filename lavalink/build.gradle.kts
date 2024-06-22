@@ -32,17 +32,6 @@ lavalinkPlugin {
 
 val proguard by tasks.registering(ProGuardTask::class)
 
-tasks {
-    jar {
-        include("dev/schlaubi/lyrics/**")
-        include("io/ktor/**")
-        include("kotlinx/coroutines/**")
-        include("lavalink-plugins/**")
-        include("META-INF/**")
-    }
-
-}
-
 publishing {
     repositories {
         maven("https://maven.lavalink.dev/releases") {
