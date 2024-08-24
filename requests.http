@@ -1,0 +1,27 @@
+POST https://music.youtube.com/youtubei/v1/next
+Content-Type: application/json
+
+{
+  "context": {
+    "client": {
+      "clientName": "ANDROID_MUSIC",
+      "clientVersion": "6.31.55"
+    }
+  },
+  "videoId": "AhTypsCd3dM"
+}
+###
+
+POST https://music.youtube.com/youtubei/v1/browse
+Content-Type: application/json
+
+{
+  "context": {
+    "client": {
+      "clientName": "ANDROID_MUSIC",
+      "clientVersion": "7.11.50"
+    }
+  },
+  "browseId": "MPLYt_Pb2eRHyQqF4-1"
+}
+###

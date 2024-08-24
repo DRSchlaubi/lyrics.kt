@@ -2,9 +2,11 @@ package dev.schlaubi.lyrics.internal.model
 
 import kotlinx.serialization.Serializable
 
-internal val mobileYoutubeMusicContext = Context(Context.Client("ANDROID_MUSIC", "6.31.55"))
+private val youtubeMusicVersion = "7.11.50"
+
+internal val mobileYoutubeMusicContext = Context(Context.Client("ANDROID_MUSIC", youtubeMusicVersion))
 internal fun mobileYoutubeMusicContext(region: String?) =
-    Context(Context.Client("ANDROID_MUSIC", "6.31.55", region))
+    Context(Context.Client("ANDROID_MUSIC", youtubeMusicVersion, region))
 
 @Serializable
 internal data class Context(
