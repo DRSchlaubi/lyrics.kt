@@ -1,9 +1,9 @@
 [versions]
-ktor = "2.3.12"
-kotlin = "2.0.20"
-lavalink-api = "4.0.7"
-lavalink-server = "4.0.7"
-coroutines = "1.9.0-RC.2"
+ktor = "3.0.1"
+kotlin = "2.0.21"
+lavalink-api = "4.0.8"
+lavalink-server = "4.0.8"
+coroutines = "1.9.0"
 
 
 [libraries]
@@ -16,14 +16,14 @@ ktor-serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serializatio
 
 kotlinx-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
-kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version = "1.7.1" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version = "1.7.3" }
 
-lavaplayer = { group = "dev.arbjerg", name = "lavaplayer", version = "2.2.1" }
+lavaplayer = { group = "dev.arbjerg", name = "lavaplayer", version = "2.2.2" }
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-lavalink = { id = "dev.arbjerg.lavalink.gradle-plugin", version = "1.0.15" }
-dokka = { id = "org.jetbrains.dokka", version = "1.9.20" }
-maven-publish-plugin = { id = "com.vanniktech.maven.publish.base", version = "0.29.0" }
+lavalink = { id = "dev.arbjerg.lavalink.gradle-plugin", version = "1.1.2" }
+dokka = { id = "org.jetbrains.dokka", version = "2.0.0-Beta" }
+maven-publish-plugin = { id = "com.vanniktech.maven.publish.base", version = "0.30.0" }

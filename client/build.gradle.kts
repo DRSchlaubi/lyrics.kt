@@ -52,6 +52,6 @@ tasks {
 }
 
 mavenPublishing {
-    configure(KotlinMultiplatform(JavadocJar.Dokka("dokkaHtml")))
+    configure(KotlinMultiplatform(JavadocJar.Dokka("dokkaGeneratePublicationHtml")))
     publishToMavenCentral(SonatypeHost.S01, true)
 }
