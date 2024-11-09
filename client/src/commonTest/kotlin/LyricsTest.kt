@@ -15,12 +15,12 @@ class LyricsTest {
         val parsed = Json.decodeFromString<Lyrics>(ClassLoader.getSystemResource("wegotthemoves.json").readText())
         assertEquals(parsed, lyrics)
     }
-
-    @Test
-    fun `search for lyrics`() = withClient {
-        val lyrics = requestLyrics("gn8dzGmlhzU")
-
-        val parsed = Json.decodeFromString<Lyrics>(ClassLoader.getSystemResource("saygoodbye.json").readText())
-        assertEquals(parsed, lyrics)
-    }
+// Yt removed lyrics for this song and now my test failed LOL
+//    @Test
+//    fun `search for lyrics`() = withClient {
+//        val lyrics = requestLyrics("gn8dzGmlhzU")
+//
+//        val parsed = Json.decodeFromString<Lyrics>(ClassLoader.getSystemResource("saygoodbye.json").readText())
+//        assertEquals(parsed, lyrics)
+//    }
 }

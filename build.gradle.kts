@@ -12,7 +12,7 @@ plugins {
 
 allprojects {
     group = "dev.schlaubi.lyrics"
-    version = "2.5.1"
+    version = "2.5.2"
 
     repositories {
         mavenCentral()
