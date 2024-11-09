@@ -21,6 +21,6 @@ dependencies {
 }
 
 mavenPublishing {
-    configure(KotlinJvm(JavadocJar.Dokka("dokkaJavadoc")))
+    configure(KotlinJvm(JavadocJar.Dokka("dokkaGeneratePublicationHtml")))
     publishToMavenCentral(SonatypeHost.S01, true)
 }
