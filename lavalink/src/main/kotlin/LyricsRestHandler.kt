@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.server.ResponseStatusException
 
 @RestController
-class LyricsRestHandler(private val socketServer: ISocketServer, private val config: Config) {
+class LyricsRestHandler(private val socketServer: ISocketServer, private val config: LyricsConfig) {
     private val client = LyricsClient()
 
     @GetMapping(value = ["/v4/lyrics/{videoId}"])

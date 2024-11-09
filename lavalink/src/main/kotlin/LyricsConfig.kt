@@ -5,6 +5,6 @@ import org.springframework.stereotype.Component
 
 @ConfigurationProperties(prefix = "plugins.lyrics")
 @Component
-class Config {
+class LyricsConfig {
     var countryCode: String? = null
 }
