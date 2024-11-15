@@ -37,7 +37,7 @@ class LyricsRestHandler(private val socketServer: ISocketServer, private val con
             ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Not currently playing anything")
 
         try {
-            client.findLyrics(track)
+            client.findLyrics(track, config.countryCode)
         } catch (_: LyricsNotFoundException) {
             throw ResponseStatusException(HttpStatus.NOT_FOUND)
         }

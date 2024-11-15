@@ -13,11 +13,11 @@ import java.util.concurrent.CompletionStage
  * Finds the lyrics for [track].
  */
 @JvmName("findLyricsSuspending")
-public suspend fun LyricsClient.findLyrics(track: AudioTrack): Lyrics {
+public suspend fun LyricsClient.findLyrics(track: AudioTrack, region: String? = null): Lyrics {
     val videoId = when {
         track.sourceManager.sourceName == "youtube" -> track.info.identifier
-        track.info.isrc != null -> search(track.info.isrc).firstOrNull()?.videoId ?: throw LyricsNotFoundException()
-        else -> search("${track.info.title} - ${track.info.author}").firstOrNull()?.videoId
+        track.info.isrc != null -> search("\"${track.info.isrc}\"", region).firstOrNull()?.videoId ?: throw LyricsNotFoundException()
+        else -> search("${track.info.title} - ${track.info.author}", region).firstOrNull()?.videoId
             ?: throw LyricsNotFoundException()
     }
 
@@ -29,13 +29,17 @@ public suspend fun LyricsClient.findLyrics(track: AudioTrack): Lyrics {
  *
  * @see CompletionStage
  */
-public fun LyricsClient.findLyricsAsync(track: AudioTrack): CompletionStage<Lyrics> = future { findLyrics(track) }
+@JvmOverloads
+public fun LyricsClient.findLyricsAsync(track: AudioTrack, region: String? = null): CompletionStage<Lyrics> =
+    future { findLyrics(track, region) }
 
 /**
  * Finds the lyrics for [track].
  *
  * **Important:** This method blocks the current thread
  */
+@JvmOverloads
 @JvmName("findLyrics")
-public fun LyricsClient.findLyricsBlocking(track: AudioTrack): Lyrics =
-    findLyricsAsync(track).toCompletableFuture().join()
+public fun LyricsClient.findLyricsBlocking(track: AudioTrack, region: String? = null): Lyrics =
+    findLyricsAsync(track, region).toCompletableFuture().join()
+
