@@ -1,6 +1,6 @@
 import com.vanniktech.maven.publish.MavenPublishBaseExtension
 import com.vanniktech.maven.publish.MavenPublishBasePlugin
-import org.jetbrains.kotlin.gradle.dsl.KotlinTopLevelExtension
+import org.jetbrains.kotlin.gradle.dsl.KotlinBaseExtension
 
 plugins {
     alias(libs.plugins.kotlin.jvm) apply false
@@ -12,7 +12,7 @@ plugins {
 
 allprojects {
     group = "dev.schlaubi.lyrics"
-    version = "2.6.1"
+    version = "2.7.0"
 
     repositories {
         mavenCentral()
@@ -56,7 +56,7 @@ subprojects {
     }
 
     afterEvaluate {
-        configure<KotlinTopLevelExtension> {
+        configure<KotlinBaseExtension> {
             jvmToolchain(17)
         }
     }
