@@ -35,7 +35,7 @@ internal fun JsonObject.getTracks(albumArt: List<Lyrics.Track.AlbumArt>): Lyrics
 
     val title = lockScreen.getRunningText("title") ?: notFound()
     val author = lockScreen.getRunningText("shortBylineText") ?: notFound()
-    val album = lockScreen.getRunningText("albumText") ?: notFound()
+    val album = lockScreen.getRunningText("albumText")
 
     return Lyrics.Track(title, author, album, albumArt)
 }

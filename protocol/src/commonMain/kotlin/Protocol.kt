@@ -23,13 +23,13 @@ public sealed interface Lyrics {
      *
      * @property title the title of the track
      * @property author the author of the track
-     * @property album the album the track is in
+     * @property album the album the track is in (if any)
      */
     @Serializable
     public data class Track(
         val title: String,
         val author: String,
-        val album: String,
+        val album: String?,
         val albumArt: List<AlbumArt>
     ) {
         /**

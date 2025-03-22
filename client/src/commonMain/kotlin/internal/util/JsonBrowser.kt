@@ -22,6 +22,4 @@ internal fun JsonArray.getJsonObject(index: Int) = getOrNull(index)?.jsonObject
 internal fun JsonObject.getJsonArray(key: String) = this[key]?.jsonArray
 
 internal fun JsonObject.getRunningText(key:String) = getJsonObject(key)
-    ?.getJsonArray("runs")
-    ?.map {it.jsonObject.getString("text")}
-    ?.joinToString(" ")
+    ?.getJsonArray("runs")?.joinToString(" ") { it.jsonObject.getString("text").toString() }
