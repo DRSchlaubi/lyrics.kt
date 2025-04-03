@@ -87,7 +87,7 @@ internal val JsonObject.lines: List<TimedLyrics.Line>
                 val start = range.getLong("startTimeMilliseconds") ?: return@let null
                 val end = range.getLong("endTimeMilliseconds") ?: return@let null
                 start..end
-            } ?: error("Could not calculate range")
+            }
 
             TimedLyrics.Line(line, range)
         }
