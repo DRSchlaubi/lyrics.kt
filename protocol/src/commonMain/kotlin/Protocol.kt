@@ -71,7 +71,7 @@ public data class TimedLyrics(
     @Serializable
     public data class Line(
         val line: String,
-        val range: SerializableLongRange
+        val range: SerializableLongRange?
     )
 }
 
